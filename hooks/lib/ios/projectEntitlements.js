@@ -126,6 +126,10 @@ function generateAssociatedDomainsContent(pluginPreferences) {
  * @return {String} record
  */
 function domainsListEntryForHost(host) {
+  if (host.mode) {
+    return `applinks:${host.name}?mode=${host.mode}`
+  }
+  
   return 'applinks:' + host.name;
 }
 

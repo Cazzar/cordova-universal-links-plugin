@@ -93,7 +93,8 @@ function constructHostEntry(xmlElement) {
   var host = {
       scheme: DEFAULT_SCHEME,
       name: '',
-      paths: []
+      paths: [], 
+      mode: null
     };
   var hostProperties = xmlElement['$'];
 
@@ -107,6 +108,10 @@ function constructHostEntry(xmlElement) {
   // read scheme if defined
   if (hostProperties['scheme'] != null) {
     host.scheme = hostProperties.scheme;
+  }
+
+  if (hostProperties['mode']) {
+    host.mode = hostProperties.mode;
   }
 
   // construct paths list, defined for the given host
