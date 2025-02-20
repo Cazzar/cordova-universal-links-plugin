@@ -51,7 +51,7 @@ function readPreferences(cordovaContext) {
 // region Private API
 
 function getTeamIdPreference(xmlPreferences) {
-  if (xmlPreferences.hasOwnProperty('ios-team-id')) {
+  if ('ios-team-id' in xmlPreferences) {
     return xmlPreferences['ios-team-id'][0]['$']['value'];
   }
 
@@ -93,7 +93,7 @@ function constructHostEntry(xmlElement) {
   var host = {
       scheme: DEFAULT_SCHEME,
       name: '',
-      paths: [], 
+      paths: [],
       mode: null
     };
   var hostProperties = xmlElement['$'];
@@ -113,7 +113,7 @@ function constructHostEntry(xmlElement) {
   if (hostProperties['mode']) {
     host.mode = hostProperties.mode;
   }
-
+  
   // construct paths list, defined for the given host
   host.paths = constructPaths(xmlElement);
 
